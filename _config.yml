@@ -89,6 +89,7 @@ footer:
 #       url: "https://instagram.com/"
 
 defaults:
+    baseurl: "/intro/welcome-page/"
   # _posts
   - scope:
       path: ""
