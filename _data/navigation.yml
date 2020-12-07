@@ -7,3 +7,106 @@ main:
     url: /tags/
   - title: "About"
     url: /about/
+    
+    main:
+  - title: "Posts"
+    url: /posts/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "About"
+    url: /about/
+
+cheatsheets:
+  - title: Linux
+    children:
+      - title: "Ports cheatsheet"
+        url: /cheetsheet/Common Ports Cheatsheet/
+      - title: "Nmap Cheat Sheet"
+        url: /network/nmap/  
+  # - title: Powershell
+  #   children:
+  #     - title: "Powershell Basics"
+  #       url: /powershell/powershell-basics/
+  # - title: Docker
+  #   children:
+  #     - title: "Basics of docker"
+  #       url: /docker/docker_1/
+#   - title: HackTheBox
+#     children:
+#       - title: "Quick"
+#         url: /htb/quick/
+#       - title: "Admirer"
+#         url: /htb/admirer/
+#       - title: "Cache"
+#         url: /htb/cache/        
+#       - title: "SneakyMailer"
+#         url: /htb/sneakymailer/
+#       - title: "Feline"
+#         url: /htb/feline/
+#       - title: "Unbalanced"
+#         url: /htb/unbalanced/
+#       - title: "Passage"
+#         url: /htb/passage/
+#   - title: TryHackMe
+#     children:
+#       - title: "Harder"
+#         url: /thm/harder/
+#       - title: "Recovery"
+#         url: /thm/recovery/
+#       - title: "Help Bears"
+#         url: /thm/help_bears/     
+#       - title: "Anonymous"
+#         url: /thm/anonymous/ 
+#       - title: "Root Me"
+#         url: /thm/rootme/
+#       - title: "Revenge"
+#         url: /thm/revenge/
+#       - title: "MarketPlace"
+#         url: /thm/marketplace/
+#       - title: "Undiscovered"
+#         url: /thm/undiscovered/
+#       - title: "The Server From Hell"
+#         url: /thm/serverfromhell/ 
+#       - title: "NerdHerd"
+#         url: /thm/nerdherd/
+#       - title: "Year of the dog"
+#         url: /thm/yearofthedog/
+#       - title: "WWBuddy"
+#         url: /thm/wwbuddy/ 
+#       - title: "Startup"
+#         url: /thm/startup/
+#       - title: "Year of the Pig"
+#         url: /thm/yearofthepig/ 
+#       - title: "Python Playground"
+#         url: /thm/pythonp/
+#       - title: "Relevent"
+#         url: /thm/relevant/
+#       - title: "Dogcat"
+#         url: /thm/dogcat/   
+#       - title: "The Blob Blog"
+#         url: /thm/theblobblog/
+#       - title: "Misguided Ghosts"
+#         url: /thm/misguided_ghosts/ 
+#       - title: "Convert My Video"
+#         url: /thm/convertmyvideo/
+#       - title: "BookStore"
+#         url: /thm/bookstore/
+#       - title: "Internal"
+#         url: /thm/internal/
+#       - title: "Unbaked Pie"
+#         url: /thm/unbaked_pie/
+#       - title: "Motunui"
+#         url: /thm/motunui/   
+                                    
+#   # - title: Cryptopals
+#   #   children:
+#   #     - title: "Set 1"
+#   #       url: /crypto/cryptopals-set1/
+#   #     - title: "Set 2"
+#   #       url: /crypto/cryptopals-set2/
+#   # - title: Overthewire
+#   #   children:
+#   #     - title: "Natas"
+#   #       url: /overthewire/natas/
