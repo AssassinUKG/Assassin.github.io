@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Penetration test and helpful tips, cheatsheets
 twitter_username: username
 github_username: AssassinUKG
-minimal_mistakes_skin: neon
+minimal_mistakes_skin: air
 search: true
 
 # Build settings
@@ -72,6 +72,9 @@ author:
 #     - label: "Instagram"
 #       icon: "fab fa-fw fa-instagram"
 #       url: "https://instagram.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/richard-jones-2a8934a2/"
 
 footer:
   links:
