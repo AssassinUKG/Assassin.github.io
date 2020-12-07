@@ -9,9 +9,9 @@ main:
     url: /about/
     
 cheatsheets:
-  - title: Linux
+  - title: Cheatsheets
     children:
-      - title: "Ports cheatsheet"
+      - title: "Ports Cheatsheet"
         url: /cheetsheet/Common Ports Cheatsheet/
       - title: "Nmap Cheat Sheet"
         url: /network/nmap/  
