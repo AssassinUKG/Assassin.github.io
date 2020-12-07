@@ -7,6 +7,7 @@ tags:
   - cheatsheet
   - pentest
   - hacking
+author_profile: false
 ---
 
 ## What is Nmap?
