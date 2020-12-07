@@ -12,13 +12,13 @@ cheatsheets:
   - title: Cheatsheets
     children:
       - title: "Ports Cheatsheet"
-        url: /cheetsheet/Common Ports Cheatsheet/
+        url: /cheetsheet/common-ports-cheatsheet/
       - title: "Nmap Cheat Sheet"
-        url: /cheetsheet/Nmap cheatsheet/
+        url: /cheetsheet/nmap-cheatsheet/
       - title: "Pentest Quick Cheatsheet"
-        url: "/cheetsheet/Pentest Quick Cheatsheet/"
+        url: "/cheetsheet/pentest-quick-cheatsheet/"
       - title: "Reverse Shells Cheatsheet"
-        url: "/cheetsheet/Reverse shells cheatsheet/"
+        url: "/cheetsheet/reverse-shells-cheatsheet/"
         
   # - title: Powershell
   #   children:
