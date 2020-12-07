@@ -1,8 +1,9 @@
 ---
 title: "Reverse shells cheatsheet"
 excerpt_separator: "<!--more-->"
+author_profile: false
 categories:
-  - Cheatsheet
+  - cheatsheet
 tags:
   - cheatsheet
   - pentest
