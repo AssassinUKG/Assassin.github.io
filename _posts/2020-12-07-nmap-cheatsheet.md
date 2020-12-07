@@ -2,7 +2,7 @@
 title: "Nmap cheatsheet"
 excerpt_separator: "<!--more-->"
 categories:
-  - Cheatsheet
+  - cheatsheet
 tags:
   - cheatsheet
   - pentest
