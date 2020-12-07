@@ -161,12 +161,6 @@ nmap -oG scan.log 127.0.0.1
 ```console
 nmap -oA scan 127.0.0.1
 ```
-This saves the output in all format ie normal,xml and greppable.
-#### Files generated using -oA flag
-```console
-local@local:~/website/nmap$ ls
-file.gnmap  file.nmap  file.xml
-```
 
 ### Verbosity
 ```console
@@ -251,7 +245,7 @@ Currently defined categories are **auth, broadcast, default. discovery, dos, exp
 
 Theses scripts can be found inside folder **/usr/share/nmap/scripts**.
 ```console
-local@local:/usr/share/nmap/scripts$ ls | wc -l
+/usr/share/nmap/scripts$ ls | wc -l
 599
 ```
 The version of nmap that I am currenly running has a total of 599 scripts.
@@ -269,7 +263,7 @@ nmap --script=vuln 127.0.0.1
 It scans the targets which the scripts which are marked as **vuln**.
 #### Listing the vuln scripts
 ```console
-local@local:/usr/share/nmap/scripts$ ls | grep -i vuln
+$/usr/share/nmap/scripts$ ls | grep -i vuln
 http-vuln-cve2006-3392.nse  
 http-vuln-cve2009-3960.nse
 http-vuln-cve2010-0738.nse
@@ -301,12 +295,12 @@ Enable OS detection, version detection, default script scanning, and traceroute.
 # Combining what we have learned so far
 
 ```console
-local@local:/usr/share/nmap/scripts$ nmap -sC -sV -oN nmap-scan 192.168.1.2
+$:/usr/share/nmap/scripts$ nmap -sC -sV -oN nmap-scan 192.168.1.2
 ```
 We scan the target with ip 192.168.1.2 for top 1000 open ports along with version detection of the service running, uses default scripts and the ouput will be saved on the normal nmap-scan file.
 
 ```console
-local@local:/usr/share/nmap/scripts$ nmap -p- -A -T4 -oA nmap/nmap-scan 192.168.1.2
+$:/usr/share/nmap/scripts$ nmap -p- -A -T4 -oA nmap/nmap-scan 192.168.1.2
 ```
 Here we are scanning target with ip address 192.168.1.2 for all open ports and -A flag which will enable OS detection, version detection, traceroute as well as uses default scripts and save the output inside a nmap directory with file name nmap-scan.
 
