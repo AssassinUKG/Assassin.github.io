@@ -16,9 +16,9 @@ cheatsheets:
       - title: "Nmap Cheat Sheet"
         url: /cheetsheet/nmap-cheatsheet/
       - title: "Pentest Quick Cheatsheet"
-        url: "/cheetsheet/pentest-quick-cheatsheet/"
+        url: /cheatsheet/pentest-quick-cheatsheet/
       - title: "Reverse Shells Cheatsheet"
-        url: "/cheetsheet/reverse-shells-cheatsheet/"
+        url: /cheetsheet/reverse-shells-cheatsheet/
         
   # - title: Powershell
   #   children:
