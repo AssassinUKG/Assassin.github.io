@@ -24,32 +24,32 @@ Nmap (Network Mapper) is a free and open-source network scanner created by Gordo
 ## Target Scanning
 ### Scanning a single target
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1
+nmap 127.0.0.1
 ```
 
 ### Scanning a host
 ```console
-local@local:~/learn/nmap$ nmap mydomain.com
+nmap mydomain.com
 ```
 
 ### Scanning multiple targets
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 192.168.0.1
+nmap 127.0.0.1 192.168.0.1
 ```
 
 ### Scanning a whole network
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1/24
+nmap 127.0.0.1/24
 ```
 
 ### Scanning multiple targets using IP range
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1-210
+nmap 127.0.0.1-210
 ```
 
 ### Scanning targets from a file
 ```console
-local@local:~/learn/nmap$ nmap -iL targets.txt
+nmap -iL targets.txt
 ```
 Content of targets.txt
 ```
@@ -60,106 +60,106 @@ Content of targets.txt
 
 ### Excluding a target from a IP range
 ```console
-local@local:~/learn/nmap$ nmap 192.168.1.1/24 --exclude 192.168.1.1
+nmap 192.168.1.1/24 --exclude 192.168.1.1
 ```
 
 ## Scanning Techniques
 ### TCP SYN Scan -sS
 ```console
-local@local:~/learn/nmap$ sudo nmap -sS 192.168.1.2
+sudo nmap -sS 192.168.1.2
 ```
 Here the Nmap first sends the TCP SYN packet to the port it is scanning and if the port is open, it acknowledges by sending a SYN ACK. Then to complete a full TCP handshake our Nmap is supposed to send a ACK packet which it does not and closes the connection. And the full TCP connection is never established. As the connection was never established the server won't have the log of us scanning the network and also we now know if the port was open or not.
 
 ### TCP connect Scan -sT
 ```console
-local@local:~/learn/nmap$ nmap -sT 192.168.1.2
+nmap -sT 192.168.1.2
 ```
 This is the default scan done by the nmap. It doesnot requires sudo priviliges like the TCP syn scan and it establishes the connection using the 3 way TCP handshake.
 
 ### UDP Scan (-sU)
 ```console
-local@local:~/learn/nmap$ sudo nmap -sU 192.168.1.2
+sudo nmap -sU 192.168.1.2
 ```
 Like the name suggests, it is used for scanning open UDP ports on the network. UDP port scanning is usually very slower and requires sudo privileges.
 
 ### Ping Scan (-sP)
 ```console
-local@local:~/learn/nmap$ sudo nmap -sP 192.168.1.1/24
+sudo nmap -sP 192.168.1.1/24
 ```
 Ping scan is used just to check whether the device is on or not. It also requires root privileges, otherwise it just uses the usual TCP connect scan.
 
 ## Host Discovery
 ### List all targets
 ```console
-local@local:~/learn/nmap$ nmap -sL 192.168.1.1/24
+nmap -sL 192.168.1.1/24
 ```
 It does not scan the targets but only lists them.
 
 ### Host discovery only ( No Port Scanning)
 ```console
-local@local:~/learn/nmap$ nmap -sn 192.168.1.1/24
+nmap -sn 192.168.1.1/24
 ```
 
 ### Port Scanning only ( No Host discovery)
 ```console
-local@local:~/learn/nmap$ nmap -Pn 192.168.1.3
+nmap -Pn 192.168.1.3
 ```
 As some targets can have rules not to reply to ping requests to avoid denial of service attacks, \-Pn does not check if the host is up or not and continues to do the port scan. 
 
 ### Avoiding DNS resolution (-n)
 ```console
-local@local:~/learn/nmap$ nmap -n 192.168.1.1/24
+nmap -n 192.168.1.1/24
 ```
 
 ## Specifying Ports on our scan
 ### Top 1000 ports
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1
+nmap 127.0.0.1
 ```
 The default scan checks for top 1000 ports. Top 1000 ports does not mean ports in  range 1 - 1000 but the according the frequency of occurence of ports. For example it is highly likely for a webserver to have port 443 and port 80 open.
 
 ### Scanning a range of Ports
 ```console
-local@local:~/learn/nmap$ nmap -p 1-1000 127.0.0.1
+nmap -p 1-1000 127.0.0.1
 ```
 ### Scanning all 65535 ports
 ```console
-local@local:~/learn/nmap$ nmap -p- 127.0.0.1
+nmap -p- 127.0.0.1
 ```
 ### Scanning a single port
 ```console
-local@local:~/learn/nmap$ nmap -p 22 127.0.0.1
+nmap -p 22 127.0.0.1
 ```
 ### Fast scan
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -F
+nmap 127.0.0.1 -F
 ```
 It is a fast scan and only scans the top 100 ports.
 
 ### Scanning top N ports
 ```console
-local@local:~/learn/nmap$ nmap --top-ports 2000 127.0.0.1
+nmap --top-ports 2000 127.0.0.1
 ```
 This scan for top 2000 ports.
 
 # Output format
 ### Output in normal format
 ```console
-local@local:~/learn/nmap$ nmap -oN scan.log 127.0.0.1
+nmap -oN scan.log 127.0.0.1
 ```
 This saves the result of the scan in filename scan.log in normal format.
 
 ### Output in  xml file
 ```console
-local@local:~/learn/nmap$ nmap -oX scan.xml 127.0.0.1
+nmap -oX scan.xml 127.0.0.1
 ```
 ### Output in greppable format
 ```console
-local@local:~/learn/nmap$ nmap -oG scan.log 127.0.0.1
+nmap -oG scan.log 127.0.0.1
 ```
 ### Output in all format
 ```console
-local@local:~/learn/nmap$ nmap -oA scan 127.0.0.1
+nmap -oA scan 127.0.0.1
 ```
 This saves the output in all format ie normal,xml and greppable.
 #### Files generated using -oA flag
@@ -170,46 +170,46 @@ file.gnmap  file.nmap  file.xml
 
 ### Verbosity
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -v
+nmap 127.0.0.1 -v
 ```
 We can get extra information by using -v (verbose) flag. -vv flag increases the level of verbosity.
 
 ### Debugging
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -d
+nmap 127.0.0.1 -d
 ```
 It increase the debugging level. We can use -dd flag for greater debugging effect.
 
 # Speed of scanning
 ### Paranoid
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T0
+nmap 127.0.0.1 -T0
 ```
 ### Sneaky
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T1
+nmap 127.0.0.1 -T1
 ```
 Paranoid and Sneaky method are used for IDS evasion.
 ### Polite
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T2
+nmap 127.0.0.1 -T2
 ```
 Polite mode slows down the scan to use less bandwidth and target machine resources. 
 
 ### Normal
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T3
+nmap 127.0.0.1 -T3
 ```
 This is default scanning mode.
 
 ### Aggressive
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T4
+nmap 127.0.0.1 -T4
 ```
 Aggressive mode speeds scans up by making the assumption that you are on a reasonably fast and reliable network.
 ### Insane
 ```console
-local@local:~/learn/nmap$ nmap 127.0.0.1 -T5
+nmap 127.0.0.1 -T5
 ```
 Insane mode assumes that you are on an extraordinarily fast network or are willing to sacrifice some accuracy for speed
 
@@ -217,30 +217,30 @@ The faster you want to complete your scan, increase the number from 1 to 5. But 
 
 ### Specifying rate for scanning
 ```console
-local@local:~/learn/nmap$ nmap -p- --min-rate 10000 127.0.0.1
+nmap -p- --min-rate 10000 127.0.0.1
 ```
 Scanning for all the open ports on a target takes time. So we can tell nmap to send packets no slower than **N** number per second, in this case it is 10000 packets per second.
 And also we can specifiy the maximum rate of sending packets per second.
 
 ```console
-local@local:~/learn/nmap$ nmap --max-rate 10 127.0.0.1
+nmap --max-rate 10 127.0.0.1
 ```
 
 ### Specifying maximum number of retries
 ```console
-local@local:~/learn/nmap$ nmap -p- 127.0.0.1 --max-retries 0
+nmap -p- 127.0.0.1 --max-retries 0
 ```
 This flag specifies the number of times a packet is to be resent on a port to check if it is open or closed. Setting its value to 0 can speed up the process but decreases the accuracy.
 
 ## Version Discovery
 ```console
-local@local:~/learn/nmap$ nmap -sV 127.0.0.1
+nmap -sV 127.0.0.1
 ```
 Nmap tries to detemine the version of the sevice running on the port which if correctly determined can be very useful later on during a penetration testing.
 
 ## OS Discovery
 ```console
-local@local:~/learn/nmap$ nmap -O 127.0.0.1
+nmap -O 127.0.0.1
 ```
 Nmap tries to detemine the Operating System that our target is running using TCP/IP stack fingerprinting.
 
@@ -258,13 +258,13 @@ The version of nmap that I am currenly running has a total of 599 scripts.
 
 ### Scanning with default scripts
 ```console
-local@local:~/learn/nmap$ nmap -sC 127.0.0.1
+nmap -sC 127.0.0.1
 ```
 It performs the scan with default NSE scripts.
 
 ### Specifying the type of scripts
 ```console
-local@local:~/learn/nmap$ nmap --script=vuln 127.0.0.1
+nmap --script=vuln 127.0.0.1
 ```
 It scans the targets which the scripts which are marked as **vuln**.
 #### Listing the vuln scripts
@@ -286,13 +286,13 @@ smtp-vuln-cve2011-1764.nse
 ```
 ### Running scripts with wildcard
 ```console
-local@local:~/learn/nmap$ nmap --script="http*" 127.0.0.1
+nmap --script="http*" 127.0.0.1
 ```
 It scans the target with scripts starting with **http**.
 
 ## All in one
 ```console
-local@local:~/learn/nmap$ nmap -A 127.0.0.1
+nmap -A 127.0.0.1
 ```
 Enable OS detection, version detection, default script scanning, and traceroute.
 
