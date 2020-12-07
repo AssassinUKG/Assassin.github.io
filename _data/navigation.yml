@@ -8,16 +8,6 @@ main:
   - title: "About"
     url: /about/
     
-    main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title: "About"
-    url: /about/
-
 cheatsheets:
   - title: Linux
     children:
