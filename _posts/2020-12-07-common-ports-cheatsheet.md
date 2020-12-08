@@ -3,7 +3,7 @@ title: "Common Ports Cheatsheet"
 excerpt_separator: "<!--more-->"
 author_profile: false
 categories:
-  - Cheatsheet
+  - cheatsheet
 tags:
   - cheatsheet
   - pentest
