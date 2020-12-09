@@ -119,8 +119,7 @@ s_string("STATS ");
 s_string_variable("0");
 ```
 
-ensuring that you edit the 'STATS' command with whatever command you're attempting to test ('TRUN' in our case). 
-
+ensuring that you edit the 'STATS' command with whatever command you're attempting to test ('TRUN' in our case).
 ```console
 generic_send_tcp IP port command.spk 0 0
 ```
@@ -365,7 +364,7 @@ It's time to find what pointer you need to use to direct the program to your She
 
 10. Write down any of the column results that are mostly all "false." You will have to test these. In the instance of vulnserver, the result that will work is 625011af, but if you didn't know that, you might have to perform the next steps on multiple of these false column results.
 
-11. Edit the included script
+11. Edit the included script    
 
 ```python
 import socket
