@@ -38,8 +38,8 @@ Buffer overflow vulnerabilities typically occur in code that:
 * [Spiking](#spiking)
 * [Fuzzing](#fuzzing)
 * [Finding the Offset](#finding-the-offset)
-* Overwrighting the EIP
-* Finding bad charaters
+* [Overwrighting the EIP](#overwriting-the-eip)
+* [Finding bad charaters](#finding-bad-charaters)
 * Finding the right module
 * Generating the shell code
 
@@ -187,7 +187,7 @@ If everything is correct, when you run the above command, you should get an exac
 
 Ensure that you write down this offset match.
 
-## Overwriting the Offset
+## Overwriting the EIP
 This step will help you ensure that you can control the EIP. If you are successful, you will observe 4 "B" characters within the EIP space(42424242, 42 = B hexidecimal) (Based off of the script code)
 1. Restart Immunity + the Exe and attach as you did previously.
 2. Edit the provided python script to test your offset
