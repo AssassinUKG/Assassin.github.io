@@ -182,7 +182,6 @@ Use the following command, replacing the -l switch value with your identified fu
 /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 386F4337
 ```
 If everything is correct, when you run the above command, you should get an exact offset match that looks like this:
-
 ![](/assets/images/offset.png)
 
 Ensure that you write down this offset match.
@@ -228,7 +227,6 @@ python offset.py
 ```
 
 5. You should now observe 4 "B characters" represented by 42424242 written to the EIP.
-
 ![](/assets/images/EIP2.PNG)
 
 6. You now control the EIP. Good job!
@@ -292,7 +290,6 @@ python badchars.py
 8. In the Hex Dump, 01 represents the first bad character tested while FF represents the last. The bad characters go in order, compare the Hex Dump with the characters you copied into Notepad.
 9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF.
 10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.
-
 ![Bad Chars](/assets/images/badchars.png)
 
 ## Finding the right module
