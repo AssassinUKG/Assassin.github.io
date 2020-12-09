@@ -46,17 +46,24 @@ Buffer overflow vulnerabilities typically occur in code that:
 ## Setup
 **Vulnserver**     
 * Download vulnserver and the 'essfunc.dll' (make sure they are together in a folder)
+* Connecting. Run 'vulnserver.exe' then you can connect with netcat
+```console
+nc 127.0.0.1 9999
+```
+127.0.0.1 (localhost) on port 9999
 
 **Immunity Debugger**    
-* Downlaod and install Immuntiy debugger, then run once and close.
+* Downlaod and install Immunity debugger, then run once and close.
 * Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python. 
 
 **Mona.py**    
 * Download Mona.py and place the Mona.py file in 'PyCommands' folder (inside the Immunity Debugger application folder).
- 
+
 
 ## Spiking
+Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
 
+We can test this with a spiking tool called " 
 
 ## Fuzzing
 Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
