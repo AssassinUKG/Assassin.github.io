@@ -19,7 +19,10 @@ cheatsheets:
         url: /cheatsheet/pentest-quick-cheatsheet/
       - title: "Reverse Shells Cheatsheet"
         url: /cheatsheet/reverseshells-cheatsheet/
-        
+  - title: OSCP
+    children:
+      - title: "Buffer Overflow Guide OSCP Basics"
+        url: /bufferoverflow/bufferoverflow-vulnserver/
   # - title: Powershell
   #   children:
   #     - title: "Powershell Basics"
