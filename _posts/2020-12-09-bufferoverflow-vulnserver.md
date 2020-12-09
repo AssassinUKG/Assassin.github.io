@@ -61,8 +61,7 @@ Run
 ```console
 vulnserver.exe 9999
 ```
-or vulnserver 666 (to use port 666)
-
+*Or vulnserver 666 (to use port 666)
 Connect
 ```console
 nc 127.0.0.1 9999
