@@ -41,6 +41,7 @@ Buffer overflow vulnerabilities typically occur in code that:
 
 ## Sections
 * [Setup](#setup)
+* [The Stack](#the-stack)
 * [Spiking](#spiking)
 * [Fuzzing](#fuzzing)
 * [Finding the Offset](#finding-the-offset)
@@ -73,6 +74,26 @@ nc 127.0.0.1 9999
 
 **Mona.py**    
 * Download Mona.py and place the Mona.py file in 'PyCommands' folder (inside the Immunity Debugger application folder).    
+
+## The Stack
+Anatomy of the stack:
+When we look into the memory stack, we will find 4 main components:
+1. Extended Stack Pointer (ESP)
+2. Buffer Space
+3. Extended Base Pointer (EBP)
+4. Extended Instruction Pointer (EIP) / Return Address
+The 4 components above actually sit in order from top to bottom.
+![](/assets/images/esp.PNG)
+
+We only really need to be concerned with buffer space and the EIP. Buffer space is used as a storage area for memory in some coding languages. 
+With proper input sanitation, information placed into the buffer space should never travel outside of the buffer space itself. Another way to think of this is that information placed into the buffer space should stop at the EBP as such:
+![](/assets/images/esp2.png)
+
+In the above example, you can see that a a number of A’s (x41) were sent to the buffer space, but were correctly sanitized. The A’s did not escape the buffer space and thus, no buffer overflow occurred. Now, let’s look at an example of a buffer overflow:
+![](/assets/images/esp3.png)
+
+Now, the A’s have completely escaped the buffer space and have actually reached the EIP... This is an example of a buffer overflow and how poor coding can become dangerous.
+If an attacker can gain control of the EIP, he or she can use the pointer to point to malicious code and gain a reverse shell. So lets do that!! 
 
 ## Spiking
 Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
