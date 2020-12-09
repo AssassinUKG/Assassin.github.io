@@ -162,7 +162,7 @@ python offset.py
 ```
 
 4. Go into Immunity and look for a number written in the EIP space.
-[/assets/images/EIP.png]
+[Eip value](/assets/images/EIP.png)
 
 5. If there is no number written into the EIP space, the number of bytes you identified in your Fuzz may be off. Go back to step 1 and regenerate pattern code, using a number higher than whatever you had written to the script. For instance, if you used 700, try 1000, or 1200. If you are unsuccessful, you may have messed up during Fuzzing. Go back to the Fuzzing section and try to stop the script faster when you see the Access Violation in Immunity.
 6. When you find a number written to the EIP, write this number down somewhere. (EIP: 386F4337)
