@@ -462,8 +462,8 @@ Ensure that your exploitation IP and Port and command values are correct. Take y
 5. Ensure that all variables are correct, including your exact byte value, pointer value, etc.
 
 6. Start your netcat listener: 
-```powershell
-nc -lvp 4444
+```console
+nc -lnvp 4444
 ```
 ![](/assets/images/listen.png)
 
