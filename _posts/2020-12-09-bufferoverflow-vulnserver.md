@@ -34,6 +34,7 @@ Buffer overflow vulnerabilities typically occur in code that:
 * [Mona.py](https://github.com/corelan/mona) (Mona module for Immunity debugger)
 
 ## Sections
+* Setup
 * Spiking
 * Fuzzing
 * Finding the Offset
@@ -41,3 +42,15 @@ Buffer overflow vulnerabilities typically occur in code that:
 * Finding bad charaters
 * Finding the right module
 * Generating the shell code
+
+## Setup
+**Vulnserver** - Download vulnserver and the 'essfunc.dll' (make sure they are together in a folder)
+
+## Spiking
+
+
+## Fuzzing
+Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
+Fuzzing can be done manually or with help from 
+
+
