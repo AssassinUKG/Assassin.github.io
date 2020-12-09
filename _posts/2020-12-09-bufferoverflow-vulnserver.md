@@ -64,7 +64,8 @@ nc 127.0.0.1 9999
 ## Spiking
 Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
 
-Observe the commands that you can use on the service, in TheCyberMentor video, the vulnerable service command was "TRUN," but in reality, you will likely have to use the script (generic_send_tcp) on multiple commands until the program breaks. If you do NOT see any commands to test, proceed to the FAQ at the end of this README.md file.
+The vulnerable service command is "TRUN," but in reality, you will likely have to use the script (generic_send_tcp) on multiple commands until the program breaks. 
+If you do NOT see any commands to test, proceed to the FAQ at the end of this README.md file.
 Run Immunity as Admin.
 Run the executable you found. (or downloaded for practice)
 Attach to the executable process.
@@ -75,7 +76,6 @@ s_readline();
 s_string("STATS ");
 s_string_variable("0");
 ```
-
 ensuring that you edit the 'STATS' command with whatever command you're attempting to test ('TRUN' in our case). 
 ```console
 Command: generic_send_tcp IP port command.spk 0 0
