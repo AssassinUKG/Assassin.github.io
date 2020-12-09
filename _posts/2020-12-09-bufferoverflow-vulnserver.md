@@ -523,3 +523,4 @@ Congratulations!!
 > [TheCyberMentor](https://www.thecybermentor.com/buffer-overflows-made-easy)   
 > [0xRick's Blog](https://0xrick.github.io/binary-exploitation/bof1/)    
 > [Detailed Spike Fuzzing](https://samsclass.info/127/proj/p18-spike.htm)    
+> [War FTP bof by Kim (great guide)](https://www.notion.so/Demo-Time-WAR-FTP-v1-65-626628a7a3ca46b0b157e18d30862831)
