@@ -306,7 +306,6 @@ It's time to find what pointer you need to use to direct the program to your She
 ![](/assets/images/mona.png)
 
 3. You will see a bunch of information come up; you are concerned with the Module Info section. You are looking for a module that has all "False" values, preferably a dll, but it could be the actual exe you're attached to depending on the box you're attempting to exploit.
-
 ![](/assets/images/monamodules.png)
 
 4. Write down this module, for example, essfunc.dll
@@ -367,6 +366,7 @@ Ensure you edit the IP, port, and command of the script.
 ![](/assets/images/blackarror.png)
 
 13. Click the pointer in the window in the top left-hand corner, click F2, you should see the value highlighted with a color. The objective is to set a break-point for testing.
+
 ![](/assets/images/breakpoint.png)
 
 14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
