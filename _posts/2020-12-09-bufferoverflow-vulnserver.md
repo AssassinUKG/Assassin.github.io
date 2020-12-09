@@ -353,8 +353,7 @@ It's time to find what pointer you need to use to direct the program to your She
 #FFE4 = "\xff\xe4"
 ```
 
-7. Return to that command box you used for mona modules, this time type: 
-
+7. Return to that command box you used for mona modules, this time type:
 ```console
 !mona find -s "\xff\xe4" -m essfunc.dll
 ```
