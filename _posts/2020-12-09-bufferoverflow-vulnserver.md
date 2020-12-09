@@ -233,3 +233,32 @@ python offset.py
 
 6. You now control the EIP. Good job!
 
+## Finding Bad Charaters
+
+Finding Bad Characters
+The focus of this section is identifying bad characters so you can ensure they do not get included in your Shellcode.
+1. The original script is now modified to use Georgia Weidman's bad character cheat sheet.
+
+```python
+
+```
+
+2. Null bytes x00 are automatically considered bad because of issues they tend to cause during Buffer Overflows, make sure that you note that as your first bad character.
+3. Edit the provided script, copy the Bad Characters section into a notepad, or somewhere that you can compare them against the Immunity Console. Ensure that you change the IP, Port, and Command within the script with your values.
+4. Relaunch Immunity and the executable, attaching to the program as you did in previous steps.
+5. Run the script Command:
+```console
+python badchars.py
+```
+
+6. Go to Immunity, right-click on the ESP value, and click on "Follow in Dump."
+
+![](/assets/images/followindump.PNG)
+
+7. Right-click on the Hex Dump tab and click "Appearance -> Font -> OEM" this will make the values a little bigger for comparison.
+8. In the Hex Dump, 01 represents the first bad character tested while FF represents the last. The bad characters go in order, compare the Hex Dump with the characters you copied into Notepad.
+9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF. It's a true "eye test," as TheCyberMentor says.
+10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.
+
+![Bad Chars](/assets/images/badchars.png)
+
