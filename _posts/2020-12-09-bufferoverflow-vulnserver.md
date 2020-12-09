@@ -35,9 +35,9 @@ Buffer overflow vulnerabilities typically occur in code that:
 
 ## Sections
 * [Setup](#setup)
-* Spiking
-* Fuzzing
-* Finding the Offset
+* [Spiking](#spiking)
+* [Fuzzing](#fuzzing)
+* [Finding the Offset](#finding-the-offset)
 * Overwrighting the EIP
 * Finding bad charaters
 * Finding the right module
@@ -171,6 +171,7 @@ Use the following command, replacing the -l switch value with your identified fu
 /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 386F4337
 ```
 If everything is correct, when you run the above command, you should get an exact offset match that looks like this:
+
 ![](/assets/images/offset.png)
 
 Ensure that you write down this offset match.
