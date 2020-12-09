@@ -404,7 +404,7 @@ represents 625011af.
 Ensure you edit the IP, port, and command of the script.
 
 12. Go back to Immunity's CPU window, click the black arrow, and type in the pointer tested to follow the expression (for instance: 625011af)
-![](/assets/images/blackarror.png)
+![](/assets/images/blackarrow.png)
 
 13. Click the pointer in the window in the top left-hand corner, click F2, you should see the value highlighted with a color. The objective is to set a break-point for testing.
 
