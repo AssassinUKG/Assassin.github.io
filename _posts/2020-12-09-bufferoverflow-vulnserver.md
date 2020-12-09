@@ -78,21 +78,26 @@ Run the executable you found. (or downloaded for practice)
 Attach to the executable process.
 Click the "Play" button in Immunity, ensure it says Running on the bottom right-hand corner.
 Use the provided command file
+
 ```console
 s_readline();
 s_string("STATS ");
 s_string_variable("0");
 ```
+
 ensuring that you edit the 'STATS' command with whatever command you're attempting to test ('TRUN' in our case). 
+
 ```console
 generic_send_tcp IP port command.spk 0 0
 ```
+
 After you utilize the command.spk, look to see if there's an Access Violation in Immunity, if there is not, edit the command within the command.spk to a different one and retest. 
 
 ## Fuzzing
 Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
 
 fuzz.py Script
+
 ```python
 #!/usr/bin/python
 from __future__ import print_function
@@ -118,9 +123,11 @@ while True:
 Edit the provided fuzz.py script. Replace the IP, PORT, and TRUN command with the IP, port, and command you want to test.
 Restart Immunity debugger + the Exe and attach as you did previously.
 Run the script 
+
 ```console
 python fuzz.py
 ```
+
 Try to use CTRL+C to stop the script exactly when you see an Access Violation pop-up in Immunity.
 Doing so will ensure you can more accurately estimate the bytes it took to crash it.
 Write down the number of bytes it took to crash the program. (My test showed: 2118 byte length)
@@ -130,6 +137,7 @@ Write down the number of bytes it took to crash the program. (My test showed: 21
 The correct identification of the offset will help ensure that the Shellcode you generate will not immediately crash the program.
 
 1. Generate pattern code, replacing the number in the command with the number of bytes it took to crash the program.
+
 ```console
 /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3000
 ```
@@ -137,7 +145,9 @@ The correct identification of the offset will help ensure that the Shellcode you
 2. Copy the output of the pattern_create command and edit the offset.py script provided in this repository. Replace the existing offset value portion of the script with the pattern that you generated from the command. Replace the IP, Port, and Command as you did in the previous testing sections.
 Closeout Immunity + the executable program.
 3. Repeat the process of relaunching Immunity and attaching to the executable program.
+
 Run the script
+
 ```python
 #!/usr/bin/python
 import sys, socket
@@ -162,6 +172,7 @@ python offset.py
 ```
 
 4. Go into Immunity and look for a number written in the EIP space.
+
 ![Eip value](/assets/images/EIP.png)
 
 5. If there is no number written into the EIP space, the number of bytes you identified in your Fuzz may be off. Go back to step 1 and regenerate pattern code, using a number higher than whatever you had written to the script. For instance, if you used 700, try 1000, or 1200. If you are unsuccessful, you may have messed up during Fuzzing. Go back to the Fuzzing section and try to stop the script faster when you see the Access Violation in Immunity.
@@ -217,6 +228,7 @@ python offset.py
 ```
 
 5. You should now observe 4 "B characters" represented by 42424242 written to the EIP.
+
 ![](/assets/images/EIP2.png)
 
 6. You now control the EIP. Good job!
