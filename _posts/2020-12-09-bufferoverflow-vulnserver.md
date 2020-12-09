@@ -11,6 +11,8 @@ tags:
   - guide
 ---
 
+![](/assets/images/buffer-verflow.jpg)
+
 # Buffer Overflow Tutorial 
 > Basic EIP Bypass (vulnserver.exe, Windows version)    
 
