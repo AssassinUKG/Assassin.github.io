@@ -293,5 +293,39 @@ python badchars.py
 9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF.
 10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.
 
-![Bad Chars](/assets/images/badchars.png =200x100)
+![Bad Chars](/assets/images/badchars.png)
 
+## Finding the right module
+
+It's time to find what pointer you need to use to direct the program to your Shellcode for the Buffer Overflow
+1. Relaunch your Immunity and your program, reattach. This time, do not press the "play" button.
+2. Go into Immunity, and in the white space underneath the "terminals" type: 
+```console
+!mona modules
+```
+![](/assets/images/mona.png)
+
+3. You will see a bunch of information come up; you are concerned with the Module Info section. You are looking for a module that has all "False" values, preferably a dll, but it could be the actual exe you're attached to depending on the box you're attempting to exploit.
+
+![](/assets/images/monamodules.png)
+
+4. Write down this module, for example, essfunc.dll
+5. You are now going to identify the JMP ESP, which is crucial because it represents the pointer value and will be essential for using your Shellcode.
+6. JMP ESP converted to hex is FFE4, that's what you're looking for.
+7. Return to that command box you used for mona modules, this time type: 
+
+```console
+!mona find -s "\xff\xe4" -m essfunc.dll
+```
+
+8. The -m switch represents the module that you're trying to find the JMP ESP for, ensure that you swap out essfunc.dll with whatever the module value you wrote down in step 4.
+9. When you use the command, you will get a column of results that look like this: 0x625011af 0x625011bb 0x625011c7 0x625011d3 0x625011df 0x625011eb 0x625011f7 0x62501203 0x62501205
+![](/assets/images/monamodules2.png)
+
+10. Write down any of the column results that are mostly all "false." You will have to test these. In the instance of vulnserver, the result that will work is 625011af, but if you didn't know that, you might have to perform the next steps on multiple of these false column results.
+11. Edit the included jumpboyz.py script, edit the shellcode string with the reversed version of one of the results you got from step 10, for example: "\xaf\x11\x50\x62" represents 625011af. Ensure you edit the IP, port, and command of the script.
+12. Go back to Immunity's CPU window, click the black arrow, and type in the pointer tested to follow the expression (for instance: 625011af)
+13. Click the pointer in the window in the top left-hand corner, click F2, you should see the value highlighted with a color. The objective is to set a break-point for testing.
+14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
+15. Run the python script Command: python jumpboyz.py
+16. If you see the pointer value written to the EIP, you can now generate Shellcode. If you don't see it, repeat the process with other column pointer values you identified as false from Step 9.
