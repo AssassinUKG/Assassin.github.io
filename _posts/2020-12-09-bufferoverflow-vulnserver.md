@@ -9,6 +9,7 @@ tags:
   - pentest
   - hacking
   - guide
+  - oscp
 ---
 
 <p align="center">
