@@ -229,7 +229,7 @@ python offset.py
 
 5. You should now observe 4 "B characters" represented by 42424242 written to the EIP.
 
-![](/assets/images/EIP2.png)
+![](/assets/images/EIP2.PNG)
 
 6. You now control the EIP. Good job!
 
