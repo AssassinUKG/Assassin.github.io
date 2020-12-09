@@ -408,7 +408,10 @@ Ensure you edit the IP, port, and command of the script.
 
 13. Click the pointer in the window in the top left-hand corner, click F2, you should see the value highlighted with a color. The objective is to set a break-point for testing.
 
-![](/assets/images/breakpoint.png)
+<p align="center">
+  <img src="/assets/images/breakpoint.png">
+</p>
+
 
 14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
 
