@@ -519,7 +519,7 @@ Congratulations!!
 
 
 ## Credits
-> [Stephen Bradshaw: ](https://github.com/stephenbradshaw/vulnserver)    
-> [TheCyberMentor: ](https://www.thecybermentor.com/buffer-overflows-made-easy)   
-> [0xRick's Blog :](https://0xrick.github.io/binary-exploitation/bof1/)    
-> [Detailed Spike Fuzzing: ](https://samsclass.info/127/proj/p18-spike.htm)    
+> [Stephen Bradshaw](https://github.com/stephenbradshaw/vulnserver)    
+> [TheCyberMentor](https://www.thecybermentor.com/buffer-overflows-made-easy)   
+> [0xRick's Blog](https://0xrick.github.io/binary-exploitation/bof1/)    
+> [Detailed Spike Fuzzing](https://samsclass.info/127/proj/p18-spike.htm)    
