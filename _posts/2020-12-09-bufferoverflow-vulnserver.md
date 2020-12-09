@@ -47,6 +47,13 @@ Buffer overflow vulnerabilities typically occur in code that:
 **Vulnserver**     
 * Download vulnserver and the 'essfunc.dll' (make sure they are together in a folder)
 * Connecting. Run 'vulnserver.exe' then you can connect with netcat
+Run
+```console
+vulnserver.exe 9999
+```
+or vulnserver 666 (to use port 666)
+
+Connect
 ```console
 nc 127.0.0.1 9999
 ```
@@ -114,8 +121,9 @@ Run the script
 ```console
 python fuzz.py
 ```
-Try to use CTRL+C to stop the script exactly when you see an Access Violation pop-up in Immunity. Doing so will ensure you can more accurately estimate the bytes it took to crash it.
-Write down the number of bytes it took to crash the program.
+Try to use CTRL+C to stop the script exactly when you see an Access Violation pop-up in Immunity.
+Doing so will ensure you can more accurately estimate the bytes it took to crash it.
+Write down the number of bytes it took to crash the program. (My test showed: 2118 byte length)
 
 
 ## Finding the Offset
@@ -123,7 +131,7 @@ The correct identification of the offset will help ensure that the Shellcode you
 
 1. Generate pattern code, replacing the number in the command with the number of bytes it took to crash the program.
 ```console
-/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2000
+/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3000
 ```
 
 2. Copy the output of the pattern_create command and edit the offset.py script provided in this repository. Replace the existing offset value portion of the script with the pattern that you generated from the command. Replace the IP, Port, and Command as you did in the previous testing sections.
@@ -160,7 +168,7 @@ IMAGE HERE
 6. When you find a number written to the EIP, write this number down somewhere. (EIP: 386F4337)
 Use the following command, replacing the -l switch value with your identified fuzz-bytes number from step 1, and replace the -q switch with the number that is written to the EIP. 
 ```console
-/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 2500 -q 386F4337
+/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 386F4337
 ```
 If everything is correct, when you run the above command, you should get an exact offset match that looks like this: [*] Exact match at offset 2003
 Ensure that you write down this offset match.
