@@ -308,6 +308,11 @@ It's time to find what pointer you need to use to direct the program to your She
 4. Write down this module, for example, essfunc.dll
 5. You are now going to identify the JMP ESP, which is crucial because it represents the pointer value and will be essential for using your Shellcode.
 6. JMP ESP converted to hex is FFE4, that's what you're looking for.
+```console
+#FFE4 = 
+"\xff\xe4"
+```
+
 7. Return to that command box you used for mona modules, this time type: 
 
 ```console
