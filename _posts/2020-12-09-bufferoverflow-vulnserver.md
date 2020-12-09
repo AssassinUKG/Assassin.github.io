@@ -1,5 +1,5 @@
 ---
-title: "Pentest Quick Cheatsheet"
+title: "Buffer Overflow Guide OSCP Basics"
 excerpt_separator: "<!--more-->"
 author_profile: false
 categories:
