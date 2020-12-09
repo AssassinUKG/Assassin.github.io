@@ -27,8 +27,11 @@ Buffer overflow vulnerabilities typically occur in code that:
 • Is so complex that a programmer cannot accurately predict its behavior
 
 
-### Required Tools or Files
-
+### Required Tools/Files
+* [Immunity Debugger](https://debugger.immunityinc.com/ID_register.py) for Windows  (you can fill out fake info for downloading)
+- [Python](https://www.python.org/downloads/)
+- [Visual Studio](https://visualstudio.microsoft.com/)
+* [Mona.py](https://github.com/corelan/mona)
 
 ## Sections
 * Spiking
