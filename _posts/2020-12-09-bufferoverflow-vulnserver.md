@@ -289,7 +289,7 @@ python badchars.py
 7. Right-click on the Hex Dump tab and click "Appearance -> Font -> OEM" this will make the values a little bigger for comparison.
 8. In the Hex Dump, 01 represents the first bad character tested while FF represents the last. The bad characters go in order, compare the Hex Dump with the characters you copied into Notepad.
 9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF.
-10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.
+10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.    
 ![Bad Chars](/assets/images/badchars.png)
 
 ## Finding the right module
