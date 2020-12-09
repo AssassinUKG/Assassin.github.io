@@ -12,7 +12,7 @@ tags:
 ---
 
 # Buffer Overflow Tutorial 
-> Basic EIP Bypass (vulnserver.exe)    
+> Basic EIP Bypass (vulnserver.exe)(Windows version)    
 > Credits to Stephen Bradshaw: https://github.com/stephenbradshaw/vulnserver
 
 ### Description
@@ -44,7 +44,16 @@ Buffer overflow vulnerabilities typically occur in code that:
 * Generating the shell code
 
 ## Setup
-**Vulnserver** - Download vulnserver and the 'essfunc.dll' (make sure they are together in a folder)
+**Vulnserver**     
+* Download vulnserver and the 'essfunc.dll' (make sure they are together in a folder)
+
+**Immunity Debugger**    
+* Downlaod and install Immuntiy debugger, then run once and close.
+* Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python. 
+
+**Mona.py**    
+* Download Mona.py and place the Mona.py file in 'PyCommands' folder (inside the Immunity Debugger application folder).
+ 
 
 ## Spiking
 
