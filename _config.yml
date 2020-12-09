@@ -103,6 +103,7 @@ defaults:
       related: true
       sidebar:
         nav: "cheatsheets"
+        nav: "oscp"
   # _pages
   - scope:
       path: "_pages"
