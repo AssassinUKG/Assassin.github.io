@@ -12,7 +12,7 @@ tags:
 ---
 
 # Buffer Overflow Tutorial 
-> Basic EIP Bypass (vulnserver.exe)(Windows version)    
+> Basic EIP Bypass (vulnserver.exe, Windows version)    
 
 
 ### Description
@@ -60,16 +60,14 @@ Connect
 ```console
 nc 127.0.0.1 9999
 ```
-127.0.0.1 (localhost) on port 9999
-
+127.0.0.1 (localhost) on port 9999    
 
 **Immunity Debugger**    
 * Downlaod and install Immunity debugger, then run once and close.
-* Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python. 
+* Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python.    
 
 **Mona.py**    
-* Download Mona.py and place the Mona.py file in 'PyCommands' folder (inside the Immunity Debugger application folder).
-
+* Download Mona.py and place the Mona.py file in 'PyCommands' folder (inside the Immunity Debugger application folder).    
 
 ## Spiking
 Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
@@ -95,6 +93,9 @@ generic_send_tcp IP port command.spk 0 0
 ```
 
 After you utilize the command.spk, look to see if there's an Access Violation in Immunity, if there is not, edit the command within the command.spk to a different one and retest. 
+
+[Expand your knowledge](https://shad0.io/2018/fuzzing-with-spike/)
+*Credits: Shad-0
 
 ## Fuzzing
 Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
