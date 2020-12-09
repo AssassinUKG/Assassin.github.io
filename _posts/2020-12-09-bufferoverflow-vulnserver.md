@@ -27,7 +27,7 @@ Buffer overflow is probably the best known form of software security vulnerabili
 A buffer overflow occurs when data written to a buffer also corrupts data values in memory addresses adjacent to the destination buffer due to insufficient bounds checking. This can occur when copying data from one buffer to another without first checking that the data fits within the destination buffer.
 In this case, a buffer is a sequential section of memory allocated to contain anything from a character string to an array of integers. Writing outside the bounds of a block of allocated memory can corrupt data, crash the program, or cause the execution of malicious code.
 
-#Key Concepts of Buffer Overflow
+# Key Concepts of Buffer Overflow
 * This error occurs when there is more data in a buffer than it can handle, causing data to overflow into adjacent storage.
 * This vulnerability can cause a system crash or, worse, create an entry point for a cyberattack.
 * C and C++ are more susceptible to buffer overflow.
