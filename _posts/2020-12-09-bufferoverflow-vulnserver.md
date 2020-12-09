@@ -170,6 +170,7 @@ Use the following command, replacing the -l switch value with your identified fu
 ```console
 /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 386F4337
 ```
-If everything is correct, when you run the above command, you should get an exact offset match that looks like this: [*] Exact match at offset 2003
+If everything is correct, when you run the above command, you should get an exact offset match that looks like this: 
+[*] Exact match at offset 2003    
 Ensure that you write down this offset match.
 
