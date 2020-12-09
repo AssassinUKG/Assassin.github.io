@@ -46,8 +46,8 @@ In this case, a buffer is a sequential section of memory allocated to contain an
 * [Spiking](#spiking)
 * [Fuzzing](#fuzzing)
 * [Finding the Offset](#finding-the-offset)
-* [Overwrighting the EIP](#overwriting-the-eip)
-* [Finding bad charaters](#finding-bad-charaters)
+* [Overwriting the EIP](#overwriting-the-eip)
+* [Finding bad characters](#finding-bad-characters)
 * [Finding the right module](#finding-the-right-module)
 * [Generating the shellcode](#generating-the-shellcode)
 * [Credits](#credits)
@@ -69,7 +69,7 @@ nc 127.0.0.1 9999
 127.0.0.1 (localhost) on port 9999    
 
 **Immunity Debugger**    
-* Downlaod and install Immunity debugger, then run once and close.
+* Download and install Immunity debugger, then run once and close.
 * Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python.    
 
 **Mona.py**    
@@ -93,16 +93,16 @@ With proper input sanitation, information placed into the buffer space should ne
   <img src="/assets/images/esp2.png">
 </p>
 
-In the above example, you can see that a a number of A’s (x41) were sent to the buffer space, but were correctly sanitized. The A’s did not escape the buffer space and thus, no buffer overflow occurred. Now, let’s look at an example of a buffer overflow:
+In the above example, you can see that a a number of A's (x41) were sent to the buffer space, but were correctly sanitized. The A's did not escape the buffer space and thus, no buffer overflow occurred. Now, let's look at an example of a buffer overflow:
 <p align="center">
   <img src="/assets/images/esp3.png">
 </p>
 
-Now, the A’s have completely escaped the buffer space and have actually reached the EIP... This is an example of a buffer overflow and how poor coding can become dangerous.
+Now, the A's have completely escaped the buffer space and have actually reached the EIP... This is an example of a buffer overflow and how poor coding can become dangerous.
 If an attacker can gain control of the EIP, he or she can use the pointer to point to malicious code and gain a reverse shell. So lets do that!! 
 
 ## Spiking
-Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
+Spiking is the art of finding a vunlerable command within the application you are attacking. For this example we know that the "TRUN" command is vunlerable. 
 
 The vulnerable service command is "TRUN," but in reality, you will likely have to use the script (generic_send_tcp) on multiple commands until the program breaks. 
 If you do NOT see any commands to test, proceed to the FAQ at the end of this README.md file.
@@ -269,7 +269,7 @@ python offset.py
 ## Finding Bad Charaters
 
 Finding Bad Characters
-The focus of this section is identifying bad characters so you can ensure they do not get included in your Shellcode.
+The focus of this section is identifying bad characters so you can ensure they do not get included in your Shellcode.
 1. The original script is now modified to use the bad characters.
 
 ```python
@@ -312,7 +312,7 @@ except:
 2. Null bytes x00 are automatically considered bad because of issues they tend to cause during Buffer Overflows, make sure that you note that as your first bad character.
 3. Edit the provided script, copy the Bad Characters section into a notepad, or somewhere that you can compare them against the Immunity Console. Ensure that you change the IP, Port, and Command within the script with your values.
 4. Relaunch Immunity and the executable, attaching to the program as you did in previous steps.
-5. Run the script Command:
+5. Run the script Command:
 ```console
 python badchars.py
 ```
@@ -323,7 +323,7 @@ python badchars.py
 
 7. Right-click on the Hex Dump tab and click "Appearance -> Font -> OEM" this will make the values a little bigger for comparison.
 8. In the Hex Dump, 01 represents the first bad character tested while FF represents the last. The bad characters go in order, compare the Hex Dump with the characters you copied into Notepad.
-9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF.
+9. For example, the first line of the Hex Dump could read 01 02 03 04 05, if you see a skip within this order, the character it skips is a bad character. For example, imagine the first line of the Hex Dump read 01 02 03 B0 05, you would now know that 04 is a bad character because it was skipped. You would now annotate x04 as a bad character for later. You have to evaluate all the lines until you hit your first FF.
 10. Double-check for bad characters, and then triple check, and then quadruple check. If you do not have the correct list of bad characters to avoid using in your Shellcode, it will fail.    
 ![Bad Chars](/assets/images/badchars.png)
 
@@ -333,7 +333,7 @@ It's time to find what pointer you need to use to direct the program to your She
 
 1. Relaunch your Immunity and your program, reattach. This time, do not press the "play" button.
 
-2. Go into Immunity, and in the white space underneath the "terminals" type: 
+2. Go into Immunity, and in the white space underneath the "terminals" type: 
 ```console
 !mona modules
 ```
@@ -415,7 +415,7 @@ Ensure you edit the IP, port, and command of the script.
 
 14. Now, you can click the "Play" button and observe "Running" in the bottom corner of Immunity.
 
-15. Run the python script Command:
+15. Run the python script Command:
 ```python
 python shellcodetest.py
 ```
@@ -498,7 +498,7 @@ Ensure that your exploitation IP and Port and command values are correct. Take y
 
 5. Ensure that all variables are correct, including your exact byte value, pointer value, etc.
 
-6. Start your netcat listener: 
+6. Start your netcat listener: 
 ```console
 nc -lnvp 4444
 ```
