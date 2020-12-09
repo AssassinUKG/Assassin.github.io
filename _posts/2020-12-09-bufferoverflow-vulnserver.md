@@ -83,14 +83,20 @@ When we look into the memory stack, we will find 4 main components:
 3. Extended Base Pointer (EBP)
 4. Extended Instruction Pointer (EIP) / Return Address
 The 4 components above actually sit in order from top to bottom.
-![](/assets/images/esp.PNG)
+<p align="center">
+  <img src="/assets/images/esp.png">
+</p>
 
 We only really need to be concerned with buffer space and the EIP. Buffer space is used as a storage area for memory in some coding languages. 
 With proper input sanitation, information placed into the buffer space should never travel outside of the buffer space itself. Another way to think of this is that information placed into the buffer space should stop at the EBP as such:
-![](/assets/images/esp2.png)
+<p align="center">
+  <img src="/assets/images/esp2.png">
+</p>
 
 In the above example, you can see that a a number of A’s (x41) were sent to the buffer space, but were correctly sanitized. The A’s did not escape the buffer space and thus, no buffer overflow occurred. Now, let’s look at an example of a buffer overflow:
-![](/assets/images/esp3.png)
+<p align="center">
+  <img src="/assets/images/esp3.png">
+</p>
 
 Now, the A’s have completely escaped the buffer space and have actually reached the EIP... This is an example of a buffer overflow and how poor coding can become dangerous.
 If an attacker can gain control of the EIP, he or she can use the pointer to point to malicious code and gain a reverse shell. So lets do that!! 
