@@ -172,6 +172,6 @@ Use the following command, replacing the -l switch value with your identified fu
 ```
 If everything is correct, when you run the above command, you should get an exact offset match that looks like this:
 ![](/assets/images/offset.png)
-[*] Exact match at offset 2003    
+
 Ensure that you write down this offset match.
 
