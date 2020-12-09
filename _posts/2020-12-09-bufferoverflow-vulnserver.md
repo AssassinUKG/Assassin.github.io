@@ -52,6 +52,7 @@ nc 127.0.0.1 9999
 ```
 127.0.0.1 (localhost) on port 9999
 
+
 **Immunity Debugger**    
 * Downlaod and install Immunity debugger, then run once and close.
 * Install Python 2.7.14 (or a higher 2.7.xx version) into c:\python27, thus overwriting the version that was bundled with Immunity. This is needed to avoid TLS issues when trying to update mona. Make sure you are installing the 32bit version of python. 
@@ -63,7 +64,23 @@ nc 127.0.0.1 9999
 ## Spiking
 Spiking is the art of finding a vunerable command withint the applicaion you are attacking. For this example we know that the "TRUN" command is vunerable. 
 
-We can test this with a spiking tool called " 
+Observe the commands that you can use on the service, in TheCyberMentor video, the vulnerable service command was "TRUN," but in reality, you will likely have to use the script (generic_send_tcp) on multiple commands until the program breaks. If you do NOT see any commands to test, proceed to the FAQ at the end of this README.md file.
+Run Immunity as Admin.
+Run the executable you found. (or downloaded for practice)
+Attach to the executable process.
+Click the "Play" button in Immunity, ensure it says Running on the bottom right-hand corner.
+Use the provided command file
+```console
+s_readline();
+s_string("STATS ");
+s_string_variable("0");
+```
+
+ensuring that you edit the 'STATS' command with whatever command you're attempting to test ('TRUN' in our case). 
+```console
+Command: generic_send_tcp IP port command.spk 0 0
+```
+After you utilize the command.spk, look to see if there's an Access Violation in Immunity, if there is not, edit the command within the command.spk to a different one and retest. 
 
 ## Fuzzing
 Fuzzing is to test the application is veunerable on the found exploitable input (We need to send enough data to crash the application)
