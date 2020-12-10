@@ -500,7 +500,7 @@ Ensure that your exploitation IP and Port and command values are correct. Take y
 
 6. Start your netcat listener: 
 ```console
-nc -lnvp 4444
+nc -lnvp 8888
 ```
 ![](/assets/images/listen.png)
 
