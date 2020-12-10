@@ -417,7 +417,7 @@ Ensure you edit the IP, port, and command of the script.
 
 15. Run the python script Command:
 ```python
-python shellcodetest.py
+python bofpoc.py
 ```
 
 16. If you see the pointer value written to the EIP, you can now generate Shellcode. If you don't see it, repeat the process with other column pointer values you identified as false from Step 9.
