@@ -25,8 +25,8 @@ cheatsheets:
         url: /bufferoverflow/bufferoverflow-vulnserver/
   - title: Linux
     children:
-   - title: "Kali app updates"
-      url: linux/Kali-apps-tips/
+      - title: "Kali app updates"
+        url: linux/Kali-apps-tips/
 #   - title: Windows
 #     children:
 #     - title: "Kali app updates"
