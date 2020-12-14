@@ -21,6 +21,8 @@ twitter_username: username
 github_username: AssassinUKG
 minimal_mistakes_skin: air
 search: true
+google-analytics: UA-G-8WKFF1JDCB
+
 
 # Build settings
 markdown: kramdown
