@@ -11,8 +11,12 @@ tags:
 
 
 ## Sections
+
 ### Kali app updates
 * [Metasploit update](#metasploit)
+
+###
+* [Tips and Tricks](#tips-and-tricks)
 
 
 ## Kali app updates
@@ -25,5 +29,9 @@ Install new version, Run 'msfconsole' after install
 ```console
 sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ```
+
+
+## Tips and Tricks
+
 
 
