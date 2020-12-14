@@ -21,10 +21,6 @@ tags:
 
 ## Kali app updates
 ### Metasploit
-
-<details>
-  <summary>Click to expand!</summary>
-
 Remove old metasploit 
 ```console
 sudo apt remove metasploit-framework -y
@@ -34,13 +30,11 @@ Install new version, Run 'msfconsole' after install
 sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ```
 
-</details>
+
 
 ## Tips and Tricks
 ### Chisel Quick guide 
-<details>
-  <summary>Install Chisel - Click to expand!</summary>
-
+Install Chisel
 * cd to /opt
 ```console
 cd /opt
@@ -66,7 +60,17 @@ build Windows binary
 env GOOS=windows GOARCH=amd64 go build -o chisel-x64.exe -ldflags "-s -w"
 ```
   
-</details>
+Usage: 
+(*upload chisel to the attacking machine)
+
+Use chisel to reverse connect back to the other hidden localhost port for ssh
+```consoel
+$ ./chisel server -p 9001 --reverse
+
+$ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
+```
+
+
 
 
 
