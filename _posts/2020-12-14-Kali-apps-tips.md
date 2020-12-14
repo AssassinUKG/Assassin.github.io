@@ -1,5 +1,5 @@
 ---
-title: "Kali app updates"
+title: "Kali Tricks"
 excerpt_separator: "<!--more-->"
 author_profile: false
 categories:
@@ -15,7 +15,7 @@ Remove old metasploit
 ```console
 sudo apt remove metasploit-framework -y
 ```
-Install
+Install new version, Run 'msfconsole' after install
 ```console
 sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ```
