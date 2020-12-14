@@ -11,13 +11,13 @@ tags:
 
 
 ## Metasploit
-
-* Remove old metasploit 
+Remove old metasploit 
 ```console
 sudo apt remove metasploit-framework -y
 ```
-* Install
+Install
 ```console
 sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ```
+
 
