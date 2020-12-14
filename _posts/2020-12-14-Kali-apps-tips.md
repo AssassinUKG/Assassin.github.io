@@ -60,11 +60,13 @@ build Windows binary
 env GOOS=windows GOARCH=amd64 go build -o chisel-x64.exe -ldflags "-s -w"
 ```
   
-Usage: 
+Usage: [Chisel Github](https://github.com/jpillora/chisel)
+
 (*upload chisel to the attacking machine)    
 
 Use chisel to reverse connect back to the other hidden localhost port for ssh 22 using port 9001
-```consoel
+
+```console
 $ ./chisel server -p 9001 --reverse
 
 $ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
