@@ -10,6 +10,12 @@ tags:
 ---
 
 
+## Sections
+# [Kali app updates](/Kali-app-updates)
+* [Metasploit update](/metasploit)
+
+
+## Kali app updates
 ## Metasploit
 Remove old metasploit 
 ```console
