@@ -33,7 +33,15 @@ sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/con
 
 
 ## Tips and Tricks
-### Chisel Quick guide 
+### Chisel Quick guide
+
+<details>
+  <summary>Chisel Info</summary>
+  
+Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Written in Go (golang). Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.
+
+</details>
+
 Install Chisel
 * cd to /opt
 ```console
