@@ -21,6 +21,10 @@ tags:
 
 ## Kali app updates
 ### Metasploit
+
+<details>
+  <summary>Click to expand!</summary>
+
 Remove old metasploit 
 ```console
 sudo apt remove metasploit-framework -y
@@ -30,6 +34,7 @@ Install new version, Run 'msfconsole' after install
 sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 ```
 
+</details>
 
 ## Tips and Tricks
 ### Chisel Quick guide 
