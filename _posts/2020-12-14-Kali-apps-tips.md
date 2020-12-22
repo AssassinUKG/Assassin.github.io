@@ -80,7 +80,6 @@ Script Details:-
 - Select IP if more then 1 interface (eth0, tun0)
 - List files in directory with wget links and your current IP
 - Shows all files in the current directory
-
 ```bash
 #!/bin/bash
 
@@ -140,22 +139,26 @@ ls
 sudo python3 -m http.server 80  -d .
 ```
 
-2. Give it the correct file permissions.
+2. Give it the correct file permissions. 
 ```bash
 chmod +x pss.sh
 ```
 
-3. Then copy the file/script to /usr/local/bin
+3. Then copy the file/script to /usr/local/bin 
 ```bash
 cp /usr/local/bin
 ```
 
-4. Test your new tools and scripts out from any directory. 
+4. Call your file from anywhere 
+```bash
+pss.sh
+```
+
+5. Test your new tools and scripts out from any directory. 
 ![](/assets/images/pss.png)
 
 Image for choice selection.
 ![](/assets/images/pss2.png)
-
 
 ## Kali app updates
 ### Metasploit
