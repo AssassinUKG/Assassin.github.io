@@ -73,7 +73,7 @@ $ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
 ### Install apps universally
 To make an application or script avilable systemwide you usually copy them to /usr/local/bin
 
-*Example: Say we want to get our IP address, List files and then start a python http server to server the files. 
+**Example:** If we want to get our IP address, List files and then start a python http server to server the files. 
 
 1. Make a script (or get an App you want), I've called my script: pss.py (python start server.py)
 Script Details:-
