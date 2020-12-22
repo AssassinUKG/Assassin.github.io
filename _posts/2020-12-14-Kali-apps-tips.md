@@ -153,6 +153,9 @@ cp /usr/local/bin
 4. Test your new tools and scripts out from any directory. 
 ![](/assets/images/pss.png)
 
+Image for choice selection.
+![](/assets/images/pss2.png)
+
 
 ## Kali app updates
 ### Metasploit
