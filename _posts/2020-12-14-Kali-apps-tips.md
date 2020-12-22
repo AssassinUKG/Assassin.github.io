@@ -71,7 +71,7 @@ $ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
 ```
 
 ### Install apps universally
-To make an application or script avilable systemwide you usually copy them to /usr/local/bin
+To make an application or script available system-wide you usually copy them to /usr/local/bin
 
 **Example:** If we want to get our IP address, List files and then start a python http server to server the files. 
 
