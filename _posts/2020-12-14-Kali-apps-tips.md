@@ -142,7 +142,7 @@ sudo python3 -m http.server 80  -d .
 
 2. Give it the correct file permissions.
 ```bash
-chmod +x pss.py
+chmod +x pss.sh
 ```
 
 3. Then copy the file/script to /usr/local/bin
