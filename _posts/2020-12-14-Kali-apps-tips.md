@@ -75,7 +75,7 @@ To make an application or script avilable systemwide you usually copy them to /u
 
 **Example:** If we want to get our IP address, List files and then start a python http server to server the files. 
 
-1. Make a script (or get an App you want), I've called my script: pss.py (python start server.py)
+1. Make a script (or get an App you want), I've called my script: pss.sh (python start server.sh)
 Script Details:-
 - Select IP if more then 1 interface (eth0, tun0)
 - List files in directory with wget links and your current IP
