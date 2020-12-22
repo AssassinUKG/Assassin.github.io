@@ -144,7 +144,7 @@ $ chmod +x pss.sh
 
 3. Then copy the file/script to /usr/local/bin 
 ```bash
-$ cp pss.sh /usr/local/bin
+$ cp pss.sh /usr/local/bin/
 ```
 
 4. Call your file from anywhere 
