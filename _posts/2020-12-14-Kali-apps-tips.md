@@ -14,7 +14,7 @@ tags:
 
 ### Kali
 * [Tips and Tricks](#tips-and-tricks)
-* [Install Apps Universally](#install-apps-uninversally)
+* [Install Apps Universally](#install-apps-universally)
 
 ### Kali app updates
 * [Metasploit update](#metasploit)
@@ -75,7 +75,7 @@ To make an application or script avilable systemwide you usually copy them to /u
 
 *Example: Say we want to get our IP address, List files and then start a python http server to server the files. 
 
-1. Make a script, I've called mine pss.py (python start server.py) 
+1. Make a script (or get an App you want), I've called my script: pss.py (python start server.py) 
 ```bash
 #!/bin/bash
 HN="hostname -I"
@@ -86,18 +86,18 @@ ls
 sudo python3 -m http.server 80  -d .
 ```
 
-2. Give correct permissions to the file
+2. Give it the correct file permissions.
 ```bash
 chmod +x pss.py
 ```
 
-3. Then copy it to /usr/local/bin
+3. Then copy the file/script to /usr/local/bin
 ```bash
 cp /usr/local/bin
 ```
 
 4. Test your new tools and scripts out from any directory. 
-![](/assets/images/pss.py)
+![](/assets/images/pss.png)
 
 
 ## Kali app updates
