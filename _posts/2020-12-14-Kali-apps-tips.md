@@ -12,23 +12,12 @@ tags:
 
 ## Sections
 
-### Kali app updates
-* [Metasploit update](#metasploit)
-
 ### Kali
 * [Tips and Tricks](#tips-and-tricks)
+* [Install Apps Universally](#install-apps-uninversally)
 
-
-## Kali app updates
-### Metasploit
-Remove old metasploit 
-```console
-sudo apt remove metasploit-framework -y
-```
-Install new version, Run 'msfconsole' after install
-```console
-sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
-```
+### Kali app updates
+* [Metasploit update](#metasploit)
 
 
 
@@ -81,6 +70,46 @@ $ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
 # ./chisel client YOUR-IP-HERE:9001 R:127.0.0.1:9002:ATTACKER-MACHINE-IP:22
 ```
 
+### Install apps universally
+To make an application or script avilable systemwide you usually copy them to /usr/local/bin
+
+*Example: Say we want to get our IP address, List files and then start a python http server to server the files. 
+
+1. Make a script, I've called mine pss.py (python start server.py) 
+```bash
+#!/bin/bash
+HN="hostname -I"
+HN=$(eval $HN)
+echo "MY IP: " $HN
+echo "Files..."
+ls
+sudo python3 -m http.server 80  -d .
+```
+
+2. Give correct permissions to the file
+```bash
+chmod +x pss.py
+```
+
+3. Then copy it to /usr/local/bin
+```bash
+cp /usr/local/bin
+```
+
+4. Test your new tools and scripts out from any directory. 
+![](/assets/images/pss.py)
+
+
+## Kali app updates
+### Metasploit
+Remove old metasploit 
+```console
+sudo apt remove metasploit-framework -y
+```
+Install new version, Run 'msfconsole' after install
+```console
+sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
+```
 
 
 
