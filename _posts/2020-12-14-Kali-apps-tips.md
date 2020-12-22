@@ -132,11 +132,8 @@ for entry in `ls`;do
         fi
 done
 echo -e "\nCurrent Directory Contents"
-ls --color /
+ls --color $PWD
 echo -e "\nStarting Server"
-sudo python3 -m http.server 80  -d .
-
-ls
 sudo python3 -m http.server 80  -d .
 ```
 
