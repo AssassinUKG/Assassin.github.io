@@ -98,10 +98,10 @@ HN="hostname -I"
 res=$(eval $HN)
 arrIN=(${res// / })
 IP=""
-
+echo "${arrIN[@]}"
 if [ ${#arrIN[@]} -gt 1 ]; then
-        PS3='Which IP address, 1 or 2?: '
-        options=("Option 1: ${arrIN[0]}" "Option 2: ${arrIN[1]}" "Quit")
+        PS3='Which IP address?: '
+        options=("Option 1: ${arrIN[0]}" "Option 2: ${arrIN[1]}" "Option 3: ${arrIN[2]}" "Quit")
         select opt in "${options[@]}"
         do
         case $opt in
@@ -116,8 +116,12 @@ if [ ${#arrIN[@]} -gt 1 ]; then
                         #echo "you chose choice 2"
                         break
                 ;;
+                "Option 3: ${arrIN[2]}")
+                        IP="${arrIN[2]}"
+                        break
+                ;;      
                 "Quit")
-                break
+                exit
                 ;;
                 *) echo "invalid option $REPLY";;
         esac
@@ -138,6 +142,7 @@ echo -e "\nCurrent Directory Contents"
 ls --color $PWD
 echo -e "\nStarting Server"
 sudo python3 -m http.server 80  -d .
+
 ```
 
 2. Give it the correct file permissions. 
