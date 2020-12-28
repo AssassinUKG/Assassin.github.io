@@ -10,7 +10,8 @@ tags:
   - hacking
 ---
 
-Content Author: Liodeus    
+Content Author: Liodeus
+
 [Liodeus Github](https://liodeus.github.io/2020/09/18/OSCP-personal-cheatsheet.html)
 
 
