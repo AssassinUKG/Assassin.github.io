@@ -19,6 +19,8 @@ cheatsheets:
         url: /cheatsheet/pentest-quick-cheatsheet/
       - title: "Reverse Shells Cheatsheet"
         url: /cheatsheet/reverseshells-cheatsheet/
+      - title: "Liodeus Cheatsheet"
+        url: /cheatsheet/liodeusCheatSheet-OSCP/
   - title: OSCP
     children:
       - title: "Buffer Overflow Guide OSCP Basics"
