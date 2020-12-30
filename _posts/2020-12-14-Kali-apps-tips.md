@@ -71,6 +71,8 @@ $ ./chisel client 10.8.0.116:9001 R:127.0.0.1:9002:172.17.0.1:22
 ```
 
 ### Install apps universally
+
+[Github Python and Bash](https://github.com/AssassinUKG/pythonSimpleServer) 
 To make an application or script available system-wide,
 you usually copy them to /usr/local/bin
 
