@@ -15,7 +15,7 @@ tags:
 ### Kali
 * [Tips and Tricks](#tips-and-tricks)
 * [Install Apps Universally](#install-apps-universally)
-* [Find Command](#)
+* [Find Command](#find-command)
 
 ### Kali app updates
 * [Metasploit update](#metasploit)
