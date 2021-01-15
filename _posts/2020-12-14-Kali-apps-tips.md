@@ -15,6 +15,7 @@ tags:
 ### Kali
 * [Tips and Tricks](#tips-and-tricks)
 * [Install Apps Universally](#install-apps-universally)
+* [Find Command](#)
 
 ### Kali app updates
 * [Metasploit update](#metasploit)
@@ -167,6 +168,21 @@ $ pss.sh
 
 Image for choice selection.
 ![](/assets/images/pss2.png)
+
+
+## Find Command
+
+Find files called hash and execute cat command on any found files
+```
+find / -type f -name hash -exec cat {} \; 2>/dev/null | grep "$"
+```
+
+Find all files called root.txt and user.txt then cat the contents out
+```
+find / -type f  \( -name root.txt -o -name user.txt \) -exec cat {} \; 2>/dev/null 
+```
+
+
 
 ## Kali app updates
 ### Metasploit
