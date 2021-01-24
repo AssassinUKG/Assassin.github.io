@@ -1,3 +1,16 @@
+---
+title: "SQLi Cheetsheet"
+excerpt_separator: "<!--more-->"
+author_profile: false
+categories:
+  - cheatsheet
+tags:
+  - cheatsheet
+  - pentest
+  - hacking
+  -sqli
+---
+
 # SQL injection
 
 > A SQL injection attack consists of insertion or "injection" of a SQL query via the input data from the client to the application.
