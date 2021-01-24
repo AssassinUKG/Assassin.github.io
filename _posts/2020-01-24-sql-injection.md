@@ -1,5 +1,5 @@
 ---
-title: "SQLi Cheetsheet"
+title: "SQLi Cheatsheet"
 excerpt_separator: "<!--more-->"
 author_profile: false
 categories:
