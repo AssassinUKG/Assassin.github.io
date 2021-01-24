@@ -8,7 +8,7 @@ tags:
   - cheatsheet
   - pentest
   - hacking
-  -sqli
+  - sqli
 ---
 
 
